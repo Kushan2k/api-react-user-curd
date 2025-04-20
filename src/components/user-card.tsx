@@ -23,7 +23,7 @@ function UserCard({ user }: UserCardProps) {
       <div className="avatar-content mb-2.5 sm:mb-0 sm:mr-2.5">
         <img className="avatar w-20 h-20 rounded-full" src={user.image} />
       </div>
-      <div className="user-body flex flex-col mb-4 sm:mb-0 sm:mr-4">
+      <div className="user-body w-full flex flex-col mb-4 sm:mb-0 ">
         <div className="flex items-center justify-between flex-col md:flex-row">
           <a href="#" className="title font-medium no-underline capitalize">{user.firstName} {user.lastName}</a>
 
