@@ -19,11 +19,11 @@ const queryClient = new QueryClient({
 createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
-      <UserStateProvider>
-        <UsersDataProvider>
+      <UsersDataProvider>
+        <UserStateProvider>
           <MainRouter />
-        </UsersDataProvider>
-      </UserStateProvider>
+        </UserStateProvider>
+      </UsersDataProvider>
     </BrowserRouter>
   </QueryClientProvider>
   ,
