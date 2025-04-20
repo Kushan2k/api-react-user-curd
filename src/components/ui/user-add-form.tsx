@@ -3,8 +3,19 @@ import useData from "../../hooks/useData"
 
 interface UserForm {
   onClose: () => void;
+  user?: {
+    id: number
+    firstName: string
+    lastName: string
+    age: number
+    email: string
+    phone: string
+    image: string
+  }
 }
 
+
+// Dummy images for the user
 const random_images = [
   'https://dummyjson.com/icon/jamesd/128',
   'https://dummyjson.com/icon/sophiab/128',
@@ -16,42 +27,66 @@ const random_images = [
 
 ]
 
-function UserAddForm({ onClose }: UserForm) {
+function UserAddForm({ onClose, user }: UserForm) {
 
   const [inputs, setInputs] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    age: '',
-    mobile: ''
+    first_name: user?.firstName || '',
+    last_name: user?.lastName || '',
+    email: user?.email || '',
+    age: user?.age || '',
+    mobile: user?.phone || ''
   })
+
+  //get users from context
   const { users, setUsers } = useData()
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
+    //check if all fields are filled
     if (!inputs.first_name || !inputs.last_name || !inputs.email || !inputs.age || !inputs.mobile) {
       alert('Please fill all fields')
       return
     }
+
+    //check if user exists
     const foundUser = users.find((user) => user.email === inputs.email)
     if (foundUser) {
       alert('User already exists')
       return
     }
-    const newUser = {
-      id: users.length + 1,
-      firstName: inputs.first_name,
-      lastName: inputs.last_name,
-      email: inputs.email,
-      age: inputs.age,
-      phone: inputs.mobile,
-      image: random_images[Math.floor(Math.random() * random_images.length)],
-    }
-    if (setUsers) {
-      setUsers([newUser, ...users])
+
+    //if user exists update it
+    if (user) {
+      const updatedUser = users.find((u) => u.id === user.id)
+      if (updatedUser) {
+        updatedUser.firstName = inputs.first_name
+        updatedUser.lastName = inputs.last_name
+        updatedUser.email = inputs.email
+        updatedUser.age = inputs.age
+        updatedUser.phone = inputs.mobile
+        if (setUsers) {
+          setUsers([...users])
+        }
+      }
+    } else {
+
+      //if user does not exist create it
+      const newUser = {
+        id: users.length + 1,
+        firstName: inputs.first_name,
+        lastName: inputs.last_name,
+        email: inputs.email,
+        age: inputs.age,
+        phone: inputs.mobile,
+        image: random_images[Math.floor(Math.random() * random_images.length)],
+      }
+      if (setUsers) {
+        setUsers([newUser, ...users])
+      }
     }
 
+    //close the modal
     onClose()
   }
 
@@ -104,7 +139,7 @@ function UserAddForm({ onClose }: UserForm) {
           alignItems: 'center',
           gap: '5px'
         }}>
-          Create User
+          {user ? 'Update' : 'Create'} User
         </button>
       </div>
 
