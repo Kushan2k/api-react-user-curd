@@ -1,3 +1,4 @@
+import { Pencil, Trash2 } from "lucide-react"
 
 
 interface UserCardProps {
@@ -19,7 +20,13 @@ function UserCard({ user }: UserCardProps) {
         <img className="avatar w-20 h-20 rounded-full" src={user.image} />
       </div>
       <div className="user-body flex flex-col mb-4 sm:mb-0 sm:mr-4">
-        <a href="#" className="title font-medium no-underline capitalize">{user.firstName} {user.lastName}</a>
+        <div className="flex items-center justify-between">
+          <a href="#" className="title font-medium no-underline capitalize">{user.firstName} {user.lastName}</a>
+          <div className="flex gap-x-2 ">
+            <Pencil fill="black" color="black" />
+            <Trash2 fill="red" color="red" />
+          </div>
+        </div>
         <div className="skills flex flex-col">
           <span className="subtitle text-slate-500">{user.age}</span>
           <span className="subtitle text-slate-500 hidden md:block">{user.email}</span>
