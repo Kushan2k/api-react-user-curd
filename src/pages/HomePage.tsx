@@ -13,8 +13,8 @@ function HomePage() {
       <NavBar />
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
         {
-          users && users.map((user: any) => (
-            <UserCard user={{
+          users && users.map((user: any, index: number) => (
+            <UserCard key={index} user={{
               id: user.id,
               firstName: user.firstName,
               lastName: user.lastName,
