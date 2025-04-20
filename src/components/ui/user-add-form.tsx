@@ -1,5 +1,6 @@
 import { useState } from "react"
 import useData from "../../hooks/useData"
+import toast from "react-hot-toast";
 
 interface UserForm {
   onClose: () => void;
@@ -45,20 +46,21 @@ function UserAddForm({ onClose, user }: UserForm) {
 
     //check if all fields are filled
     if (!inputs.first_name || !inputs.last_name || !inputs.email || !inputs.age || !inputs.mobile) {
-      alert('Please fill all fields')
+      toast.error('Please fill all fields')
       return
     }
 
     //check if user exists
-    const foundUser = users.find((user) => user.email === inputs.email)
-    if (foundUser) {
-      alert('User already exists')
-      return
-    }
+
 
     //if user exists update it
     if (user) {
       const updatedUser = users.find((u) => u.id === user.id)
+
+      if (!updatedUser) {
+        toast.error('User not found')
+        return
+      }
       if (updatedUser) {
         updatedUser.firstName = inputs.first_name
         updatedUser.lastName = inputs.last_name
@@ -68,8 +70,14 @@ function UserAddForm({ onClose, user }: UserForm) {
         if (setUsers) {
           setUsers([...users])
         }
+        toast.success('User updated successfully')
       }
     } else {
+      const foundUser = users.find((user) => user.email === inputs.email)
+      if (foundUser) {
+        toast.error('User already exists')
+        return
+      }
 
       //if user does not exist create it
       const newUser = {
@@ -83,6 +91,7 @@ function UserAddForm({ onClose, user }: UserForm) {
       }
       if (setUsers) {
         setUsers([newUser, ...users])
+        toast.success('User created successfully')
       }
     }
 

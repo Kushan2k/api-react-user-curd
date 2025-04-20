@@ -1,4 +1,5 @@
 
+import useUser from "../hooks/useUser"
 import UserEditModel from "./ui/user-edit-model"
 
 
@@ -15,6 +16,8 @@ interface UserCardProps {
 }
 
 function UserCard({ user }: UserCardProps) {
+
+  const { user: auth } = useUser()
   return (
     <div className="user hover:scale-105 p-1 border-[0.5px] border-gray-300 hover:cursor-pointer hover:transition flex items-center text-center flex-col sm:flex-row sm:text-left">
       <div className="avatar-content mb-2.5 sm:mb-0 sm:mr-2.5">
@@ -24,10 +27,14 @@ function UserCard({ user }: UserCardProps) {
         <div className="flex items-center justify-between flex-col md:flex-row">
           <a href="#" className="title font-medium no-underline capitalize">{user.firstName} {user.lastName}</a>
 
-          <div className="flex gap-x-2 my-3 md:my-0">
-            <UserEditModel user={user} />
+          {
+            auth && (
+              <div className="flex gap-x-2 my-3 md:my-0">
+                <UserEditModel user={user} />
 
-          </div>
+              </div>
+            )
+          }
         </div>
         <div className="skills flex flex-col">
           <span className="subtitle text-slate-500">{user.age}</span>

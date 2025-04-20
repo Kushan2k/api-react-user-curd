@@ -1,5 +1,6 @@
 import { useState } from "react"
 import useUser from "../hooks/useUser"
+import toast from "react-hot-toast"
 
 
 function LoginPage() {
@@ -15,23 +16,24 @@ function LoginPage() {
     e.preventDefault()
 
     if (!data.email || !data.password) {
-      alert("Please fill in all fields")
+      toast.error("Please fill all fields")
       return
     }
     if (!data.email.includes('@')) {
-      alert("Please enter a valid email")
+      toast.error("Please enter a valid email")
       return
     }
     if (data.password.length < 6) {
-      alert("Password must be at least 6 characters")
+      toast.error("Password must be at least 6 characters")
       return
     }
     if (data.password.length > 20) {
-      alert("Password must be less than 20 characters")
+      toast.error("Password must be at most 20 characters")
       return
     }
     login(data.email, data.password)
     setData({ email: '', password: '' })
+    toast.success("Login successful")
   }
   return (
     <div className="relative flex flex-col rounded-xl bg-transparent">
