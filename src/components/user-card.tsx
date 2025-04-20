@@ -1,5 +1,6 @@
 
 import useUser from "../hooks/useUser"
+import UserDeleteButton from "./ui/user-delete-button"
 import UserEditModel from "./ui/user-edit-model"
 
 
@@ -32,6 +33,7 @@ function UserCard({ user }: UserCardProps) {
               <div className="flex gap-x-2 my-3 md:my-0">
 
                 <UserEditModel user={user} />
+                <UserDeleteButton user={user} />
 
 
               </div>
