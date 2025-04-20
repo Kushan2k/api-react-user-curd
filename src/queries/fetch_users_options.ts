@@ -13,10 +13,3 @@ export default function fetchUsersOptions() {
  * This function is used to fetch users from the API.
   @returns {Promise<any[]>} - A promise that resolves to the response data in JSON format.
 */
-async function fetchUsers(): Promise<any[]> {
-
-  const response = await fetch('https://dummyjson.com/users');
-
-  return (await response.json())['users'];
-
-}
