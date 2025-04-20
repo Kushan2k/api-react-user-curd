@@ -18,7 +18,7 @@ interface UserEditModelProps {
 function UserEditModel({ user }: UserEditModelProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
-    <>
+    <div>
       <button style={{
         backgroundColor: 'black',
         color: 'white',
@@ -32,10 +32,10 @@ function UserEditModel({ user }: UserEditModelProps) {
       >
         <Pencil fill="white" size={15} color="white" />
       </button>
-      <Modal title="Create a User" isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal title="Update a User" isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <UserAddForm user={user} onClose={() => setIsModalOpen(false)} />
       </Modal>
-    </>
+    </div>
   )
 }
 

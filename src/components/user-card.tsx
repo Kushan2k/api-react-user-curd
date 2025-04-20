@@ -30,7 +30,9 @@ function UserCard({ user }: UserCardProps) {
           {
             auth && (
               <div className="flex gap-x-2 my-3 md:my-0">
+
                 <UserEditModel user={user} />
+
 
               </div>
             )
