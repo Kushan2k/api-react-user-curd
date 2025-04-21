@@ -36,7 +36,7 @@ function LoginPage() {
     toast.success("Login successful")
   }
   return (
-    <div className="relative flex flex-col rounded-xl bg-transparent">
+    <div className="relative flex flex-col items-center justify-center rounded-xl bg-transparent">
       <h4 className="block text-3xl font-medium text-slate-800 text-left">
         Sign In
       </h4>

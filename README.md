@@ -2,6 +2,11 @@
 
 This is a React Vite project implementing a minimal applciation to search,sort,add,update and delete users initially fetched from an external API,
 
+## Assumptions
+
+- for the login user can enter any email and password
+- all users have CRUD permisions
+
 ## Methodology
 
 - Fetch users from the external api and store them in a context
