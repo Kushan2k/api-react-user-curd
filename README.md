@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# Assessment Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React Vite project implementing a minimal applciation to search,sort,add,update and delete users initially fetched from an external API,
 
-Currently, two official plugins are available:
+## Methodology
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fetch users from the external api and store them in a context
+- use the context to update/delete and add new users to the current context without any backend or api intergation
+- minimal design and mobile friendly
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Built with React
+- Modular and reusable components
+- Easy to set up and run
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+## Setup Instructions
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/assessment.git
+cd assessment
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+or
+
+```bash
+yarn install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+yarn dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`.
+
+## Scripts
+
+- `npm run dev` - Runs the app in development mode.
+- `npm run build` - Builds the app for production.
+
+## Folder Structure
+
+```
+/src
+  /components
+  /pages
+  /assets
+  /hooks
+  /routes
+  /services
+  /layout
+
+```
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests.
+
+## License
+
+This project is licensed under the MIT License.
+based project designed to demonstrate and assess skills in building modern web applications.
