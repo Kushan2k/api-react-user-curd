@@ -89,4 +89,5 @@ Feel free to fork the repository and submit pull requests.
 This project is licensed under the MIT License.
 based project designed to demonstrate and assess skills in building modern web applications.
 
+Thank you
 bye
